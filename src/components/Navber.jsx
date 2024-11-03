@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 export default function Navber() {
   return (
-    <div className="navbar bg-base-100 justify-between">
-  <div className="navbar-start ">
+    <div className="navbar z-50 bg-white/30 backdrop-blur-lg top-0 fixed justify-between ">
+  <div className="navbar-start  ">
     <div className="dropdown ">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
         <svg
@@ -22,18 +22,19 @@ export default function Navber() {
       <ul
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3  w-52 p-2 shadow">
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/coffees'>Coffees</NavLink>
-        <NavLink to='/dashBoard'>Dashboard</NavLink>
+        <NavLink to='/' className={({isActive })=> `home ${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Home</NavLink>
+        <NavLink to='/coffees' className={({isActive })=> `${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Coffees</NavLink>
+        <NavLink to='/dashBoard' className={({isActive })=> `${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Dashboard</NavLink>
       </ul>
     </div>
     <NavLink to='/' className="btn btn-ghost text-xl">COFFEE_BOOK</NavLink>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal gap-5 px-1">
-        <NavLink to='/'>Home</NavLink>
-        <NavLink to='/coffees'>Coffees</NavLink>
-        <NavLink to='/dashBoard'>Dashboard</NavLink>
+    
+        <NavLink to='/' className={({isActive })=> `${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Home</NavLink>
+        <NavLink to='/coffees' className={({isActive })=> `${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Coffees</NavLink>
+        <NavLink to='/dashBoard' className={({isActive })=> `${isActive  ? 'text-warning ': 'hover:text-warning'}`}>Dashboard</NavLink>
     </ul>
   </div>
 

@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import DashBoard from './pages/DashBoard';
+import CoffeeCard from './components/CoffeeCard';
 
 
 const router = createBrowserRouter([
@@ -18,15 +19,30 @@ const router = createBrowserRouter([
     children: [
       {
         path:'/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=> fetch('../categories.json'),
+        children: [
+         {
+          path: '/',
+          element: <CoffeeCard></CoffeeCard>,
+          loader: ()=> fetch('../coffees.json')
+         },
+         {
+          path: '/category/:category',
+          element: <CoffeeCard></CoffeeCard>,
+          loader: ()=> fetch('../coffees.json')
+         }
+        ]
       },
       {
-        path:'coffees',
-        element: <Coffees></Coffees>
+        path:'/coffees',
+        element: <Coffees></Coffees>,
+        loader: ()=> fetch('../coffees.json')
       },
       {
-        path:'dashBoard',
+        path:'/dashBoard',
         element: <DashBoard></DashBoard>
+        
       },
     ]
   },

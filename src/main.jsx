@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import DashBoard from './pages/DashBoard';
 import CoffeeCard from './components/CoffeeCard';
+import CoffeeDetails from './pages/CoffeeDetails';
 
 
 const router = createBrowserRouter([
@@ -42,8 +43,13 @@ const router = createBrowserRouter([
       {
         path:'/dashBoard',
         element: <DashBoard></DashBoard>
-        
+      
       },
+      {
+        path:'/coffee/:id',
+        element: <CoffeeDetails></CoffeeDetails>,
+        loader: ()=> fetch('../coffees.json')
+      }
     ]
   },
 ]);
